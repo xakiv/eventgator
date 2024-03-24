@@ -7,18 +7,22 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0001_initial'),
+        ("core", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='event',
-            name='image_url',
+            model_name="event",
+            name="image_url",
             field=models.URLField(blank=True, max_length=1024, null=True),
         ),
         migrations.AlterField(
-            model_name='usereventregistration',
-            name='event',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='registrations', to='core.event'),
+            model_name="usereventregistration",
+            name="event",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="registrations",
+                to="core.event",
+            ),
         ),
     ]

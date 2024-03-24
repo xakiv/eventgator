@@ -11,7 +11,9 @@ def search_view(request):
     if request.method == "POST":
         query = request.POST.get("q")
         if query:
-            events = Event.objects.prefetch_related("registrations").filter(name__icontains=query)
+            events = Event.objects.prefetch_related("registrations").filter(
+                name__icontains=query
+            )
 
     if not events:
         events = Event.objects.prefetch_related("registrations").all()
@@ -23,18 +25,18 @@ def search_view(request):
 def event_view(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
     user = request.user
-    
+
     # try:
     #     event = Event.objects.get(pk=event_id)
     # except Event.DoesNotExist:
     #     raise Http404("Event does not exist")
-        
+
     registration = UserEventRegistration.objects.filter(user=user, event=event).first()
     return render(
         request, "core/event.html", {"event": event, "registration": registration}
     )
 
-    
+
 @login_required
 def event_create_view(request):
     if request.method == "POST":

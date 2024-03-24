@@ -7,24 +7,32 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0002_event_image_url_alter_usereventregistration_event'),
+        ("core", "0002_event_image_url_alter_usereventregistration_event"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='event',
-            name='date',
+            model_name="event",
+            name="date",
         ),
         migrations.AddField(
-            model_name='event',
-            name='event_date',
-            field=models.DateField(default=datetime.datetime(2024, 3, 9, 18, 14, 49, 245445, tzinfo=datetime.timezone.utc)),
+            model_name="event",
+            name="event_date",
+            field=models.DateField(
+                default=datetime.datetime(
+                    2024, 3, 9, 18, 14, 49, 245445, tzinfo=datetime.timezone.utc
+                )
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='event',
-            name='event_time',
-            field=models.TimeField(default=datetime.datetime(2024, 3, 9, 18, 14, 57, 276066, tzinfo=datetime.timezone.utc)),
+            model_name="event",
+            name="event_time",
+            field=models.TimeField(
+                default=datetime.datetime(
+                    2024, 3, 9, 18, 14, 57, 276066, tzinfo=datetime.timezone.utc
+                )
+            ),
             preserve_default=False,
         ),
     ]
