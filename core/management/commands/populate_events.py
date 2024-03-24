@@ -1,17 +1,20 @@
 from datetime import datetime, timedelta
 import random
+import logging
 
 from django.core.management.base import BaseCommand
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.utils.timezone import make_aware
 from faker import Faker
 
 from core.models import Event, UserEventRegistration
 
+logger = logging.getLogger(__name__)
+User = get_user_model()
+
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        self.stdout.write(self.style.SUCCESS('Starting database population...'))
-
+        logger.info("Starting database population...")
         faker = Faker()
 
         for i in range(10):
@@ -72,4 +75,4 @@ class Command(BaseCommand):
             for event in random.sample(events, k=random.randint(1, 5)):
                 UserEventRegistration.objects.create(user=user, event=event)
 
-        self.stdout.write(self.style.SUCCESS('Database population completed successfully!'))
+        logger.info("Database population completed successfully!")
