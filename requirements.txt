@@ -1,4 +1,5 @@
-Django==5.0.2
+django>=4.2,<4.3  # https://github.com/django/django
+django-environ==0.11.2  # https://github.com/joke2k/django-environ
 psycopg2==2.9.9
 tzdata==2023.4
 django-widget-tweaks==1.5.0
